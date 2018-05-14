@@ -6,6 +6,11 @@ class Bksr < Formula
 
   def install
     mv "bksr-macos", "bksr"
+
+    # Mark binary as installed from homebrew, so the bksr auto-updater can
+    # figure that out and suggest `brew upgrade` if there's a new version
+    system "xattr", "-w", "com.toolmantim.bksr:InstallMethod", "homebrew", "bksr"
+
     libexec.install Dir['*']
     bin.install_symlink libexec/"bksr"
   end
