@@ -2,7 +2,7 @@ class Bksr < Formula
   homepage "https://github.com/toolmantim/bksr"
   url "https://github.com/toolmantim/bksr/releases/download/v2.2.0/bksr-macos.zip"
   version "2.2.0"
-  sha256 "939b478daa2f690819ccb6174bd5671df648107e96b0d3ed8db0811aeb23f593"
+  sha256 "68d3b262c1937a91ce06dae815623718457509353a848e3541e16dd2ce1ae1ba"
 
   def install
     mv "bksr-macos", "bksr"
