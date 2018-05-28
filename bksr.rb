@@ -2,9 +2,9 @@ require "language/node"
 class Bksr < Formula
   homepage "https://github.com/toolmantim/bksr"
   desc "Run and test your Buildkite pipeline steps locally, just as they'd run in CI."
-  url "$STABLE_URL"
+  url "https://registry.npmjs.org/bksr/-/bksr-2.3.0.tgz"
   version "v2.3.0"
-  sha256 "$STABLE_SHA256"
+  sha256 "927e28a9136528e57e1e0b42b13967ae0b909772bb446e78309a02504bf51527"
 
   bottle :unneeded
 
