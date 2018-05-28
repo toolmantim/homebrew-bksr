@@ -1,18 +1,20 @@
+require "language/node"
 class Bksr < Formula
   homepage "https://github.com/toolmantim/bksr"
-  url "https://github.com/toolmantim/bksr/releases/download/v2.2.0/bksr-macos.zip"
-  version "2.2.0"
-  sha256 "68d3b262c1937a91ce06dae815623718457509353a848e3541e16dd2ce1ae1ba"
+  desc "Run and test your Buildkite pipeline steps locally, just as they'd run in CI."
+  url "$STABLE_URL"
+  version "v2.3.0"
+  sha256 "$STABLE_SHA256"
+
+  bottle :unneeded
+
+  depends_on "node" => :recommended
 
   def install
-    mv "bksr-macos", "bksr"
-
-    # Mark binary as installed from homebrew, so the bksr auto-updater can
-    # figure that out and suggest `brew upgrade` if there's a new version
-    system "xattr", "-w", "com.toolmantim.bksr:InstallMethod", "homebrew", "bksr"
-
-    libexec.install Dir['*']
-    bin.install_symlink libexec/"bksr"
+    system "npm", "install", *Language::Node.std_npm_install_args(libexec)
+    bin.install_symlink Dir["#{libexec}/bin/*"]
+    libexec.install Dir["*"]
+    inreplace Dir["#{libexec}/package.json"], '"installationMethod": "npm"', '"installationMethod": "homebrew"'
   end
 
   test do
